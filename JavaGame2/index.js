@@ -149,6 +149,7 @@ var myGameArea = {
                 self.context.fillStyle = "#ffffff";
                 self.context.fillText("[A]", 400, 650);
                 self.context.fillText("[B]", 600, 650);
+                self.context.fillText("[C]", 800, 650);
 
                 var clickHandler = function (event) {
                     var x = event.pageX - self.canvas.offsetLeft;
@@ -164,6 +165,13 @@ var myGameArea = {
                     } else if (x >= 600 && x <= 680 && y >= 630 && y <= 650) {
                         console.log("[B] pressed. Test complete.");
                         answers["Challenge 2"] = "Option B";
+                        console.log(answers);
+                        self.canvas.removeEventListener("click", clickHandler);
+                        self.clearCanvas();
+                        self.startScene4();
+                    } else if (x >= 800 && x <= 880 && y >= 630 && y <= 650) {
+                        console.log("[C] pressed. Test complete.");
+                        answers["Challenge 2"] = "Option C";
                         console.log(answers);
                         self.canvas.removeEventListener("click", clickHandler);
                         self.clearCanvas();
