@@ -1,6 +1,7 @@
 :: StoryData
 {
         "ifid": "53F163A7-3096-4D0E-976F-6E90C01B83DC",
+        "name": "Privacy Game",
         "start": "landing1",
         "tag-colors": {
             "Wrong-choice": "red",
@@ -11,12 +12,15 @@
 :: StoryTitle
 Privacy Game
 
-:: StoryBanner
-<img src="./JavaGame2/images/favicon.ico">
+:: StoryMenu
+[[Go Back to Home|"./teaching_material.html"]]
 
+:: StoryBanner
+<img src="./images/favicon.ico">
+    
 
 :: landing1
-<label>What is your name? <<textbox "$name" "Enter name">></label>
+<label style="font-size: largest">What is your name? <<textbox "$name" "Enter name">></label>
 [[Submit->landing]]
 
 :: landing {"position":"700,350","size":"100,100"}
