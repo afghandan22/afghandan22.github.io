@@ -2,21 +2,6 @@ body {
 	font-family: Arial, sans-serif;
 	background-color: #f2f2f2;
 }
-
-/* header {
-	background-image: url("./Untitled1.png");
-	background-size: cover;
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-color: #ffffff;
-	color: rgb(52, 52, 52);
-	text-align: center;
-	margin: 20px;
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-} */
 header {
 	background-image: url("./images/Untitled(1).png");
 	background-size: 100% 100%;
@@ -102,7 +87,7 @@ a {
 }
 
 img {
-	max-width: 80%;
+	max-width: 40%;
 	height: auto;
 }
 
@@ -318,7 +303,9 @@ img {
 	}
 
 	img {
-		max-width: auto;
+		max-width: 80%;
+		height: auto;
+		
 	}
 	  .grid-container {
 		display: flex;
@@ -362,7 +349,9 @@ img {
 	  }
 	  .grid-item1 p img {
 		align-items: center;
-		width: 200%;
+		min-width: 60%;
+		max-width: 80%;
+		height: auto;
 		margin-bottom: 10px;
 	  }
 	  p {
@@ -485,6 +474,8 @@ img {
 
   .grid-item1 p img {
 	align-items: center;
-	width: 40%;
+	/* width: 40%; */
+	max-width: 40%;
+		height: auto;
     margin-bottom: 10px;
   }
