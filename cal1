@@ -1,0 +1,53 @@
+from datetime import datetime, timedelta
+import pytz
+from zoneinfo import ZoneInfo
+from uuid import uuid4
+import os
+
+# Function to create individual .ics content
+def create_event(title, start_str, end_str):
+    uid = uuid4()
+    tz = ZoneInfo("Europe/London")
+    dt_format = "%Y-%m-%d %H:%M"
+    start_dt = datetime.strptime(start_str, dt_format).replace(tzinfo=tz)
+    end_dt = datetime.strptime(end_str, dt_format).replace(tzinfo=tz)
+
+    ics_content = f"""BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ChatGPT Custom Scheduler//EN
+BEGIN:VEVENT
+UID:{uid}
+DTSTAMP:{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}
+DTSTART;TZID=Europe/London:{start_dt.strftime('%Y%m%dT%H%M%S')}
+DTEND;TZID=Europe/London:{end_dt.strftime('%Y%m%dT%H%M%S')}
+SUMMARY:{title}
+END:VEVENT
+END:VCALENDAR"""
+    return ics_content
+
+# Define the schedule
+schedule = [
+    ("Wake up for Fajr", "2025-06-09 03:30", "2025-06-09 03:45"),
+    ("Make Wudhu", "2025-06-09 03:45", "2025-06-09 04:00"),
+    ("Pray Fajr", "2025-06-09 04:00", "2025-06-09 04:05"),
+    ("Gym session", "2025-06-09 05:00", "2025-06-09 05:45"),
+    ("Quick shower", "2025-06-09 06:00", "2025-06-09 06:30"),
+    ("Nap/Relax", "2025-06-09 06:45", "2025-06-09 07:30"),
+    ("Get ready for work", "2025-06-09 07:30", "2025-06-09 07:50"),
+    ("Travel to work", "2025-06-09 08:00", "2025-06-09 08:00"),
+    ("Council", "2025-06-09 08:00", "2025-06-09 16:30"),
+    ("Pray Zuhr", "2025-06-09 13:30", "2025-06-09 13:35"),
+    ("Curry Leaf work", "2025-06-09 17:00", "2025-06-09 22:30"),
+    ("Shower", "2025-06-09 23:15", "2025-06-09 23:30"),
+    ("Watch MC tv show?", "2025-06-09 23:30", "2025-06-10 00:30"),
+]
+
+# Create one calendar file with all events
+ics_combined = "\n".join([create_event(title, start, end) for title, start, end in schedule])
+
+# Save to file
+ics_path = "/mnt/data/Monday_2025_06_09_Schedule.ics"
+with open(ics_path, "w") as f:
+    f.write(ics_combined)
+
+ics_path
